@@ -9,10 +9,40 @@
 <body>
     <h1> Formulario de Alta de Estudiantes</h1>
 
-    <form th:object="${estudiante}" action="">
+    <form th:object="${estudiante}">
 
         <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" id="nombre" th:field="*{nombre}"> 
+        <input type="text" name="nombre" id="nombre" th:field="*{nombre}" required> 
+
+        <label for="primerApellido">Primer Apellido: </label>
+        <input type="text" name="primerApellido" id="primerApellido" th:field="*{primerApellido}" required> 
+
+        <label for="segundoApellido">Segundo Apellido: </label>
+        <input type="text" name="segundoApellido" id="segundoApellido" th:field="*{segundoApellido}"> 
+
+        <label for="fechaAlta"> Fecha de Alta: </label>
+        <input type="date" name="fechaAlta" id="fechaAlta" th:field="*{fechaAlta}" required>
+
+        <label for="fechaNacimiento"> Fecha de Nacimiento: </label>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+
+
+        <fieldset>
+            <legend>Genero</legend>
+            <label for="hombre"> Hombre:</label>
+            <input type="radio" id="hombre" name="genero" value="HOMBRE" th:field="*{genero}" required>
+
+            <label for="mujer">Mujer</label>
+            <input type="radio" id="mujer" name="genero" value="MUJER" th:field="*{genero}" required>
+
+            <label for="otro">Otro</label>
+            <input type="radio" id="otro" name="genero" value="OTRO" th:field="*{genero}" required>
+        </fieldset>
+       
+        <label for="beca">Beca:</label>
+        <input type="text" id="beca" name="beca" th:field="*{beca}">
+
+        <input type="submit" value="Alta">
 
     </form>
 
