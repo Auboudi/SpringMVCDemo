@@ -42,6 +42,13 @@
         <label for="beca">Beca:</label>
         <input type="text" id="beca" name="beca" th:field="*{beca}">
 
+        <label>Facultad: </label>
+        <select name="idFacultad" id="idFacultad" required> 
+            <option></option>
+            <option value="1">Informatica</option>
+            <option value="2">Biología</option>
+        </select>
+
         <input type="submit" value="Alta">
 
     </form>
