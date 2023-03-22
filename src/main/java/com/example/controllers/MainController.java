@@ -81,6 +81,10 @@ public class MainController {
 
         LOG.info("Telefonos recibidos: " + telefonosRecibidos);
 
+        if(estudiante.getId() != 0){
+          // Es una modificación y borramos el estudiantes y lo telefonos
+          estudianteService.deleteById(estudiante.getId());
+        }
         List<String> listadoNumerosTelefonos = null;
 
         if(telefonosRecibidos != null) {
@@ -92,6 +96,7 @@ public class MainController {
         estudianteService.save(estudiante);
 
         if(listadoNumerosTelefonos != null) {
+        // Borrar los telefonos que tenga el estudiante, si hay que insertar nuevos
           listadoNumerosTelefonos.stream().forEach(n -> {
             Telefono telefonoObject = 
                 Telefono.builder()

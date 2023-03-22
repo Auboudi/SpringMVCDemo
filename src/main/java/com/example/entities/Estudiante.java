@@ -57,7 +57,7 @@ public class Estudiante implements Serializable {
 
     private Facultad facultad;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "estudiante")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "estudiante")
     private List<Telefono> telefonos;
 
     public enum Genero {

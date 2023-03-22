@@ -33,7 +33,7 @@ public class Telefono implements Serializable{
     private int id;
     private String numero;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idEstudiante")
 
     private Estudiante estudiante;
