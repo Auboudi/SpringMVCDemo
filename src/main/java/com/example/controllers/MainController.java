@@ -81,10 +81,8 @@ public class MainController {
 
         LOG.info("Telefonos recibidos: " + telefonosRecibidos);
 
-        if(estudiante.getId() != 0){
-          // Es una modificación y borramos el estudiantes y lo telefonos
-          estudianteService.deleteById(estudiante.getId());
-        }
+        estudianteService.save(estudiante);
+        
         List<String> listadoNumerosTelefonos = null;
 
         if(telefonosRecibidos != null) {
@@ -92,11 +90,9 @@ public class MainController {
 
           listadoNumerosTelefonos = Arrays.asList(arrayTelefonos);
         }
-        
-        estudianteService.save(estudiante);
 
         if(listadoNumerosTelefonos != null) {
-        // Borrar los telefonos que tenga el estudiante, si hay que insertar nuevos
+          telefonoService.deleteByEstudiante(estudiante);
           listadoNumerosTelefonos.stream().forEach(n -> {
             Telefono telefonoObject = 
                 Telefono.builder()
@@ -133,9 +129,16 @@ public class MainController {
         model.addAttribute("telefonos", numerosDeTelefono);
         model.addAttribute("facultades", facultades);
         
-
-
-        
         return "views/formularioAltaEstudiante";
       }
+
+      @GetMapping("/borrar/{id}")
+      public String borrarEstudiante(@PathVariable(name ="id") int idEstudiante) {
+        estudianteService.delete(estudianteService.findById(idEstudiante));
+
+        return "redirect:/listar";
+
+      }
 }
+
+
